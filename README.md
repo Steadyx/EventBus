@@ -56,6 +56,7 @@ setState takes an object that can be updated, it can be used in conjunction with
 
 ----
 
+## Examples
 
 Below are some examples of how to use this Event Bus, they are just examples though. You can use this tool in any way you deem suitable. 
 ```js
