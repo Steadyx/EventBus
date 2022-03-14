@@ -21,7 +21,7 @@ const decrement = () => {
   setState({ count: getState().count - 1 });
 };
 
-emit(INCREMENT");
+emit(INCREMENT);
 emit(DECREMENT);
  
 on(INCREMENT, increment());
