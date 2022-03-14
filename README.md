@@ -1,9 +1,63 @@
 # Event Bus 
 
-I built this to help me understand event driven architechture, I've also found it very useful when developing JavaScript components that require state. Hopefully other people will find it useful as well. 
+I built this to help understand event driven architechture, I've also found it very useful when developing JavaScript components that require state. Hopefully other people will find it useful as well. 
+
+Here are the methods of the Event Bus:
+## getState
+```js
+const { getState } = EventBus({ count: 0 })
+getState() -> { count: 0 };
+```
+getState retrieves state.
+
+----
+## logState
+```js
+const { logState } = EventBus({ count: 0 })
+logState() -> { count: 0 };
+```
+logs our state in table format
+
+----
+
+## on
+```js
+const { on } = EventBus({ count: 0 })
+on(event, action);
+```
+on listens for an event from emit. when it recieves that event it can execute an action. 
+
+----
+
+## subscribe
+```js
+const { subscribe } = EventBus({ count: 0 })
+subscribe(event || [event1, event2], callback);
+```
+Like the `on` method, subscribe can take a single event or multiple events, it listens for events that have been emmited the data gets passed from the emitted function into the callback.
+
+----
+
+## off
+```js
+const { off } = EventBus({ count: 0 })
+off(event, callback)
+```
+Turns off en event
+
+----
+
+## setState
+```js
+const { setState, getState } = EventBus({ count: 0 })
+setState({ count: getState.count + 1 })
+```
+setState takes an object that can be updated, it can be used in conjunction with getState to help set the new state. 
+
+----
+
 
 Below are some examples of how to use this Event Bus, they are just examples though. You can use this tool in any way you deem suitable. 
-
 ```js
 const { emit, getState, setState, on, logState } = EventBus({ count: 0 });
 
@@ -20,14 +74,14 @@ const increment = () => {
 const decrement = () => {
   setState({ count: getState().count - 1 });
 };
+ 
+on(INCREMENT, increment);
+on(INCREMENT, increment);
+on(INCREMENT, increment);
+on(DECREMENT, decrement);
 
 emit(INCREMENT);
 emit(DECREMENT);
- 
-on(INCREMENT, increment());
-on(INCREMENT, increment());
-on(INCREMENT, increment());
-on(DECREMENT, decrement());
 
 logState();
 ```
