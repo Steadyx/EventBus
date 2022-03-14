@@ -20,8 +20,8 @@ const decrement = () => {
   setState({ count: getState().count - 1 });
 };
 
-emit("increment");
-emit("decrement");
+emit(events.INCREMENT);
+emit(events.DECREMENT);
  
 on(events.INCREMENT, increment());
 on(events.INCREMENT, increment());
