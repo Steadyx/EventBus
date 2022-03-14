@@ -7,10 +7,11 @@ Below are some examples of how to use this Event Bus, they are just examples tho
 ```js
 const { emit, getState, setState, on, logState } = EventBus({ count: 0 });
 
-const events = {
+const { INCREMENT, DECREMENT } = {
   INCREMENT: "increment",
   DECREMENT: "decrement",
 };
+
 
 const increment = () => {
   setState({ count: getState().count + 1 });
@@ -20,13 +21,50 @@ const decrement = () => {
   setState({ count: getState().count - 1 });
 };
 
-emit(events.INCREMENT);
-emit(events.DECREMENT);
+emit(INCREMENT");
+emit(DECREMENT);
  
-on(events.INCREMENT, increment());
-on(events.INCREMENT, increment());
-on(events.INCREMENT, increment());
-on(events.DECREMENT, decrement());
+on(INCREMENT, increment());
+on(INCREMENT, increment());
+on(INCREMENT, increment());
+on(DECREMENT, decrement());
+
+logState();
+```
+This package can also listen to many other events with what's called a subscription. Below is an example of the subscription that's listening on multiple events:
+
+```js
+const { emit, on, getState, setState, subscribe, logState } = EventBus({
+  count: 0,
+});
+
+const { INCREMENT, DECREMENT } = {
+  INCREMENT: "increment",
+  DECREMENT: "decrement",
+};
+
+const increment = () => {
+  setState({ count: getState().count + 1 });
+  emit(INCREMENT, { increment: getState().count });
+};
+
+const decrement = () => {
+  setState({ count: getState().count - 1 });
+  emit(DECREMENT, { decrement: getState().count });
+};
+
+subscribe([INCREMENT, DECREMENT], (data) => {
+  if (data.increment) {
+    console.log(`${data.increment} has been incremented`);
+  } else {
+    console.log(`${data.decrement} has been decremented`);
+  }
+});
+
+increment();
+increment();
+increment();
+decrement();
 
 logState();
 ```
