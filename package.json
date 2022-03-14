@@ -1,8 +1,7 @@
 {
   "name": "eventBus",
-  "type": "module",
   "version": "0.0.1",
-  "description": "A stateful Event Bus",
+  "description": "A powerful, lightweight, stateful Event Bus for Javascript applications.",
   "source": "src/index.js",
   "main": "dist/index.js",
   "module": "dist/module.js",
