@@ -1,6 +1,6 @@
 # Event Bus 
 
-I built this to help understand event driven architechture, I've also found it very useful when developing JavaScript components that require state. Hopefully other people will find it useful as well. 
+I built this to help me understand event driven architechture, I've also found it very useful when developing JavaScript components that require state. Hopefully other people will find it useful as well. 
 
 Below are some examples of how to use this Event Bus, they are just examples though. You can use this tool in any way you deem suitable. 
 
