@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "description": "A stateful Event Bus",
-  "source": "index.js",
+  "source": "src/index.js",
   "main": "dist/index.js",
   "module": "dist/module.js",
   "scripts": {
